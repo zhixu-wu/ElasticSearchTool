@@ -4,6 +4,7 @@ import com.zhixu.core.enums.FieldStyle;
 import com.zhixu.core.enums.Order;
 import com.zhixu.core.enums.Queries;
 import com.zhixu.core.function.FieldFunction;
+import com.zhixu.core.operate.DSL;
 import com.zhixu.core.operate.query.vo.RangeVO;
 import lombok.NonNull;
 
@@ -12,7 +13,7 @@ import lombok.NonNull;
  * @date 2023/10/7
  * 描述:
  */
-public interface BoolQuery<T,Children> extends QueryDSL {
+public interface BoolQuery<T,Children> extends DSL<T> {
 
     Children must(@NonNull String key, @NonNull String value, @NonNull Queries queries);
 

@@ -17,9 +17,7 @@ import java.util.Map;
 @Setter
 public class DataSourceProperties {
 
-    private String primary = "master";
-
-    private boolean printDSL = false;
+    private Boolean printDSL = false;
 
     private Map<String, DataSourceProperty> datasource;
 

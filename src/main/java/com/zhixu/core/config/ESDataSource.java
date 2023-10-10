@@ -47,7 +47,7 @@ public class ESDataSource {
 
     private void checkDsName(String dsName) throws RuntimeException {
         if (!dataSourceProperties.getDatasource().containsKey(dsName)) {
-            throw new RuntimeException(String.format("未查询到[%s]datasource", dsName));
+            throw new LoadDataSourceException(String.format("未查询到[%s]datasource", dsName));
         }
     }
 
@@ -79,5 +79,7 @@ public class ESDataSource {
         }
     }
 
-
+    public boolean printLog() {
+        return dataSourceProperties.getPrintDSL();
+    }
 }

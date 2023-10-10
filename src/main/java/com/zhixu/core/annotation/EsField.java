@@ -20,5 +20,5 @@ public @interface EsField {
 
     boolean skip() default false;
 
-    FieldStyle fieldStyle() default FieldStyle.UNDER_LINE;
+    FieldStyle fieldStyle() default FieldStyle.DEFAULT;
 }

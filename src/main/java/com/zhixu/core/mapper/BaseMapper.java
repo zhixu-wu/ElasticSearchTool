@@ -1,13 +1,11 @@
 package com.zhixu.core.mapper;
 
 import com.zhixu.core.operate.DSL;
-import com.zhixu.core.operate.query.QueryDSL;
+import com.zhixu.core.operate.query.Query;
 import lombok.NonNull;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author wuzhixu
@@ -16,25 +14,25 @@ import java.util.Map;
  */
 public interface BaseMapper<T> {
 
-    int insert(T entity);
+    int insert(@NonNull T entity);
 
-    int insert(DSL objJsonStr);
+    int insert(@NonNull DSL<T> objJsonStr);
 
-    int deleteById(String id);
+    int deleteById(@NonNull String id);
 
-    int deleteById(T entity);
+    int deleteById(@NonNull T entity);
 
-    int delete(DSL dsl);
+    int delete(@NonNull DSL dsl);
 
-    int deleteBatchIds(Collection<String> idList);
+    int deleteBatchIds(@NonNull Collection<String> idList);
 
-    int updateById(T entity);
+    int updateById(@NonNull T entity);
 
-    int update(T entity, QueryDSL dsl);
+    int update(@NonNull T entity, @NonNull Query<T, ?> dsl);
 
-    T selectById(Serializable id);
+    T selectById(String id);
 
-//    List<T> selectBatchIds(@Param("coll") Collection<? extends Serializable> idList);
+    //    List<T> selectBatchIds(@Param("coll") Collection<? extends Serializable> idList);
 //
 //    List<T> selectByMap(@Param("cm") Map<String, Object> columnMap);
 //

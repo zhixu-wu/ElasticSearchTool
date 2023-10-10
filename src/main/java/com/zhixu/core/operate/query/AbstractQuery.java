@@ -36,9 +36,6 @@ public abstract class AbstractQuery<T, Children> {
     protected int from = 0;
 
 
-
-
-
     public AbstractQuery(Class<T> entityClass) {
 
         if (entityClass == null) {
@@ -98,19 +95,11 @@ public abstract class AbstractQuery<T, Children> {
                 throw new NotFoundFieldException(String.format("not found field: %s", methodName));
             }
 
-            FieldStyle fieldStyle = getFieldStyle(methodName);
-
-            if (fieldStyle == null || FieldStyle.UNDER_LINE == fieldStyle) {
-                return methodName.replaceAll("([a-z])([A-Z]+)", "$1_$2").toLowerCase();
-            } else if (FieldStyle.CAMEL_CASE == fieldStyle) {
-                return methodName;
-            }
-
+            return FieldStyle.getStyle(getFieldStyle(methodName), methodName);
         } catch (Exception e) {
             throw new RuntimeException("", e);
         }
 
-        throw new RuntimeException("not found field");
     }
 
 
@@ -121,8 +110,7 @@ public abstract class AbstractQuery<T, Children> {
             return esField.fieldStyle();
         }
 
-        EsData esData = ClassUtils.getAnnotate(entityClass, EsData.class);
-        return esData.fieldStyle();
+        return getClassFileStyle();
     }
 
 
